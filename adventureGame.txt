@@ -1,0 +1,41 @@
+<html>
+    <head>
+    <title>Adventur Game</title>
+    </head>
+    <body>
+        <script>
+        function titleScreen (){
+        alert("Mirrors of Romonia");
+        var player = prompt("What is your name?");
+        var gameStart = confirm(player + " are you ready to start?");
+        }
+
+
+        function game(){
+            alert("Your senses are awakening. You can feel a soft breeze upon your face");
+            var path 1 = prompt("Do you open your eyes to see who is speaking?");
+        
+            function follow(){
+                
+            
+            }
+            if(path 1 == "Yes" || "yes"){
+                alert("Suddenly you look up infront of you. There stands a humaniod looking creature dressed in balck and purple.\nIt stands in what seems to be a portal of some kind ammiting light.\"Hurry they are coming for you!");
+                follow();
+            }
+                else {alert("You have choosen to remain unaware.");
+                    titleScreen();
+            }
+        }
+
+        function endGame(){
+            alert("You have left Romonia.");
+        }
+
+        if(gameStart){
+
+        game();
+        }
+        else{
+            endGame());
+        }

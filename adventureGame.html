@@ -1,45 +1,66 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <title>Adventur Game</title>
+    <title>Adventure Game</title>
     </head>
     <body>
         <script>
-        function titleScreen (){
         alert("Mirrors of Romonia: The Game");
         var player = prompt("What is your name?");
-        var gameStart = confirm(player + " are you ready to start?");
-        }
-        titleScreen();
-
+         var gameStart = confirm(player + " are you ready to start?");
+        //function of starting of game story.
         function game(){
-            alert("Your senses are awakening. You can feel a soft breeze upon your face");
-            var path 1 = prompt("Do you open your eyes to see who is speaking?");
-        
+            alert("Your senses are awakening. You can feel a soft breeze upon your face. Sunlight beats upon your skin.");
+            alert("Suddenly you feel a rush of wind and hear a voice,\"Hurry, your world is ending! Quick come with me!\"");
+            var path1 = prompt("Do you open your eyes to see who is speaking?");
+        //inPortal(); function sends you into the story. 
+        function intoPortal(){
+            alert("Running forward you follow the creature into the portal. Suddenly you seem to be blasted forward into blindg lights. When you open your eyes you see the ground heading toward you. THUMP! The creature breaks your fall and you scream in pain. Slowly you get up.");
+            var getUp = prompt("Do you get up or stay down?");
+        }
+        //stay(); makes you stay in the world
+        function stay(){
+            alert("Hesitating you step back.\n\"You idiot what are you doing!\" , the creature yells at you. It lunges toward you tackling you to the ground. That is when you realize a the creature save you from a falling fire ball.");
+        }
             function follow(){
-                
-            
+            var followingCreature = confirm("Do you follow the creature?");    
+                if (followingCreature == true){
+                    intoPortal();
+                }else{
+                   stay();
+                }
             }
-            if(path 1 == "Yes" || "yes"){
+            if(path1 == "Yes" || "yes"){
                 alert("Suddenly you look up infront of you. There stands a humaniod looking creature dressed in balck and purple.\nIt stands in what seems to be a portal of some kind ammiting light.\"Hurry they are coming for you!");
                 follow();
             }
-                else {alert("You have choosen to remain unaware.");
-                    titleScreen();
-            }
+                else {
+                    alert("You have choosen to remain asleep.");
+                    titleScreen.startUp();
+                        }
         }
 
         function endGame(){
-            alert("Alas you have left us. Farwell noble " + titleScreen().player);
+            alert("Alas you have left us. Farwell noble " + titleScreen.player);
         }
-
-        if(gameStart){
+        
+        
+        
+        
+           
+        
+        
+        //Game starts here
+        if(gameStart == true){
 
         game();
         }
-        else{
-            endGame());
+        else {
+            endGame();
         }
+        
+       
+
     </script>
 </body>
 </html>
