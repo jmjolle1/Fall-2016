@@ -20,7 +20,12 @@
                 if(getUp == "yes" || getUp == "Yes"){
                     alert("Slowly you arise, shaking off the dust. You look around and notice you are no longer in the grassy park where you were you napping.");
                     alert("Turning around you notice the purple and black creature is actually quite short. It looks like a man, but with no nose. It leaps up all of a sudden and says, \"What are you doing? Oh, I guess you've noticed we aren't in your home world. Believe me you don't want to be there. What's your name?\"");
-                    var nameQuestion = confirm("Do you tell the creature your name?");
+                   var nameQuestion = confirm("Do you tell the creature your name?");
+                    if(nameQuestion == true){
+                        alert("\"" + player + " it is a plearsure to meet you.\"");
+                    }else{
+                        alert("\"Alright then I won't bother if you want to be silent. My name is Eeork.")
+                    }
                    
                 }else{
                     alert("Still lying on the ground you look around and notice you are no longer in the grassy park where you were napping. The creature in front of you looks like a man, but with no nose. Its clothes are the deep purple and black you had seen before. Suddenly the creature speaks, \"What are you doing? Oh, I guess you've noticed we aren't in your home world. Believe me you don't want to be there. What's your name?\"");
