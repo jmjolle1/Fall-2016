@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+
+<script id="jsbin-javascript">
+var pocket = {knife: "knife", sock: "sock", wocket: "wocket", ring: "The One Ring"};
+var books = {book1:"Moby Dick", book2:"Great Expectations", book3: "Wizard of Oz", book4: "War of the Worlds"};
+var numberItem = 0;
+
+function inventory(){
+    alert("You have " + numberItem + " " + pocket.knife + "(s) in your pocket.")
+}
+
+
+for(var i = 1; i <= 4; i++){
+  pocket.bookPlace = books["book" + i];
+  numberItem++;
+  console.log(pocket);
+  inventory();
+}
+
+
+</script>
+</body>
+</html>
