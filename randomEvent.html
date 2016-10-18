@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+   <title> Game</title> 
+    </head>
+    <body>
+    <script>
+        alert("Game is starting.");
+        
+        var startDemo = confirm("Mirror Portals the Game.\nAre you ready to start?");
+            if (startDemo == true){
+                standInfrontOfPortal();
+            }else{
+                death();
+            }
+        function death (){
+            alert("You are dead!");
+        }
+        function standInfrontOfPortal(){
+            alert("You stand infront of a portal of light. Walk through it to start your adventure.");
+            portalOfLight();
+        }
+        function portalOfLight(){
+            var portalPath = new Array();
+            portalPath[0] ="You are launched forward into the light at high speed! Soon you are falling toward the ground.\" THUD! You land on the creature which breaks your fall.";
+            portalPath[1] ="Nothing happened."
+            portalPath[2] = "You step through the portal into a blinding void of light. Soon you arrive at the end into a world of red and purple rocks.";
+            portalPath[3] ="You step through the portal. When you arrive on the otherside you realize you are naked!";
+
+            var randomPortal = portalPath[Math.floor(Math.random() * portalPath.length)];
+
+            alert(randomPortal);
+
+            if (randomPortal == "You are launched forward into the light at high speed! Soon you are falling toward the ground.\" THUD! You land on the creature which breaks your fall."){
+                meetTheCreature();
+            }else if(randomPortal == "You step through the portal into a blinding void of light. Soon you arrive at the end into a world of red and purple rocks."){
+                inRomonia();
+
+            }else if(randomPortal == "You step through the portal. When you arrive on the otherside you realize you are naked!"){
+                naked();
+            }
+            else if(randomPortal == "Nothing happened."){
+                yourTackled();
+            }
+            else{
+                
+                standInfrontOfPortal();
+            }
+        }
+        function meetTheCreature(){
+            alert("The creature broke your fall and is angry. He bites your head off!");
+            death();
+        }
+        
+        function inRomonia(){
+            alert("This is the world of Romonia! Welcome\" the creature says staning infront of you.");
+        }
+        function naked(){
+            alert("You try to cover yourself behind some rocks. A monster shows up and eats you.");
+            death();
+        }
+        function yourTackled(){
+            alert("You are tackled by the creature! Looking around you notice he saved you from a fire ball.");
+        }
+    </script>
+    </body>
+</html>

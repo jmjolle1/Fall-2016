@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Adventure Game</title>
+    </head>
+    <body>
+        <script>
+        var name = undefined;
+        var gameStart_OutsideAnswer = undefined;
+        var backPack = {};
+ //restarts the game.
+        function restart(){
+            alert("You are not ready? Please return when you are able.");
+            titleScreen();
+        }
+//starting of title screen.
+        function titleScreen(){
+        var begining = alert("Mirrors of Romonia: The Game");
+        var player = prompt("What is your name?");
+         var gameStart = confirm(player + " are you ready to start?");
+         gameStart_OutsideAnswer = gameStart;
+         name = player;
+          //Game starts here
+            if(gameStart_OutsideAnswer == true){
+
+            game();
+            }
+            else {
+                restart();
+            }
+        }
+        
+        //function of starting of game story.
+function game(){
+            alert("Your senses are awakening. You can feel a soft breeze upon your face. Sunlight beats upon your skin.");
+            alert("Suddenly you feel a rush of wind and hear a voice,\"Hurry, your world is ending! Quick come with me!\"");
+            var path1 = prompt("Do you open your eyes to see who is speaking?");
+        //inPortal(); function sends you into the story. 
+        //this is where the game splits.
+            if(path1 === "Yes" || path1 === "yes"){
+                    alert("Suddenly you look up infront of you. There stands a humaniod looking creature dressed in balck and purple.\nIt stands in the way of what seems to be a portal of light.\"Hurry they are coming for you!");
+                var followCreature =  prompt("Do you follow the creature?").toLowerCase();
+                    if(followCreature == "yes"){
+                        follow();
+                    }else{
+                        stay();
+                    }
+                    
+            }
+            else if(path1 === "no" || path1 === "No"){
+                    alert("You have choosen to remain asleep.");
+                    restart();
+                        }
+                else{
+                    restart();
+                     }
+        
+        }
+function follow(){ 
+        alert("You rush enter the portal.");
+        intoPortal();
+}
+//go into the portal.
+function intoPortal(){
+            alert("Running forward you follow the creature into the portal. Suddenly you seem to be blasted forward into blindg lights. When you open your eyes you see the ground heading toward you. THUMP! The creature breaks your fall and you scream in pain.");
+            var getUp = prompt("Do you get up or stay down?\nEnter (get up) or (stay down).").toLowerCase();
+                if(getUp === "get up"){
+                    alert("Slowly you arise, shaking off the dust. You look around and notice you are no longer in the grassy park where you were you napping.");
+                    alert("Turning around you notice the purple and black creature is actually quite short. It looks like a man, but with no nose. It leaps up all of a sudden and says, \"What are you doing? Oh, I guess you've noticed we aren't in your home world. Believe me you don't want to be there. What's your name?\"");
+                   var nameQuestion1 = prompt("Do you tell the creature your name?").toLowerCase();
+                    if(nameQuestion1 === "yes"){
+                        alert(name + " it is a plearsure to meet you. My name is Eeork.\" the creature responds.");
+                        yourMission();
+                    }else if (nameQuestion1 === "no"){
+                        alert("\"Alright then I won't bother if you want to be silent.  My name is Eeork.\" the creature responds.");
+                        yourMission();
+                    }
+                    else{
+                         alert("\"Alright then I won't bother if you want to be silent.  My name is Eeork.\" the creature responds.");
+                        yourMission();
+                    }
+                }
+                   
+                else{
+                    alert("Still lying on the ground you look around and notice you are no longer in the grassy park where you were napping. The creature in front of you looks like a man, but with no nose. Its clothes are the deep purple and black you had seen before. Suddenly the creature speaks, \"What are you doing? Oh, I guess you've noticed we aren't in your home world. Believe me you don't want to be there. What's your name?\"");
+                   var nameQuestion2 = prompt("Do you tell the creature your name?");
+                    if(nameQuestion2 === "Yes" || nameQuestion2 === "yes"){
+                        alert(name + " it is a plearsure to meet you.\" My name is Eeork.\" the creature responds.");
+                        yourMission();
+                    }else if (nameQuestion2 === "no" || nameQuestion2 === "No"){
+                        alert("\"Alright then I won't bother if you want to be silent.  My name is Eeork.\" the creature responds.");
+                        yourMission();
+                    }else{
+                        alert("\"Alright then I won't bother if you want to be silent.  My name is Eeork.\" the creature responds.");
+                        yourMission();
+                    }
+                }
+}
+        //stay(); makes you stay in the world
+        function stay(){
+            alert("Hesitating you step back.\n\"You idiot what are you doing!\" , the creature yells at you. It lunges toward you tackling you to the ground. That is when you realize the creature save you from a falling fire ball.");
+            alert("Looking behind you see your city in a blaze.\"It has begun. The end of the world.\" the creature says.");
+            var acceptQuest = prompt("\"Humanity is going to die unless someone finds the Cyther chip! You , yes you could do it. Will you save the world?\"");
+                if(acceptQuest == "yes" || acceptQuest === "Yes"){
+                    alert("\"Follow me then!\" the creature yells.");
+                    startQuest();
+                }else if(acceptQuest === "no" || acceptQuest === "No") {
+                    alert("\"You are not interested in saving your world?\" the creature asks.");
+                    var askSaveWorld = confirm("Are you?");
+                        if (askSaveWorld === true){
+                            alert("A fire ball hits you and you die amongst the screaming children.");
+                            endGame();
+                        }else if (askSaveWorld === false){
+                            startQuest();
+                        }
+                }
+        }
+//startQuest function calls mission for saving the world.
+function startQuest(){
+    alert("\"Good you changed your mind. Follow me then!\" the creature yells.");
+    alert("Quickly you and the creature run to the edge of the field. A wall of fire blocks your path and the creature seems stressed.");
+    alert("\"We have to get the Guild ship. They are the one's attacking your city. But the fire is in the way!\"");
+    var chooseTool = prompt("You see a wrecked fire truck with a hose, shovel, and a sheild. Which do you choose? ");
+        /*switch(chooseTool){
+            case "shovel" || "Shovel": backPack.shovel = "shovel";
+            alert("You picked up the shovel.");
+            break;
+            case "hose" ||"Hose": backPack.hose = "hose";
+             alert("You picked up the hose.");
+            break;
+            case "shield" || "Shield": backPack.shield = "shield";
+             alert("You picked up the shield.");   
+             break;
+            default: alert("You decide to run through the fire. You burn alive!")
+            break;
+        }*/
+       
+    }
+            
+
+
+
+//endGame function
+    function endGame(){
+            alert("Alas you have left us. Farwell noble " + player);
+            restart();
+        }
+  
+    //game initiation starts here.       
+       titleScreen();    
+
+     </script>
+</body>
+</html>
