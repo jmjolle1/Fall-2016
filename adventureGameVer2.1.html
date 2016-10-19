@@ -1,0 +1,200 @@
+adventureGameVer2
+<!DOCTYPE html>
+<html>
+    <head>
+        Mirror Portals
+    </head>
+    <body>
+        <script>
+            //name variable
+            var name = undefined;
+            var backPack = {};
+            var playerOrientation = {x: 0, y: 0};
+//starting of title screen.
+ function titleScreen(){
+        var begining = alert("Mirrors of Romonia: The Game");
+        var player = prompt("What is your name?");
+         var gameStart = confirm(player + " are you ready to start?");
+         gameStart_OutsideAnswer = gameStart;
+         name = player; 
+     //Game starts here
+            if(gameStart_OutsideAnswer == true){
+
+            game();
+            }
+            else {
+                restart();
+            }
+        }
+//endGame function
+    function endGame(){
+            alert("Alas you have left us. Farwell noble " + player);
+            restart();
+        }
+//death funtion that can be used anywhere.
+function death (){
+    alert("You are dead!");
+}
+///////////////////////////////////CUT OFF OF MAIN GAME FUNCTIONS. NEXT IS SUBGAME FUNCTIONS.//////////////
+function game(){
+            alert("Your senses are awakening. You can feel a soft breeze upon your face. Sunlight beats upon your skin.");
+            alert("Suddenly you feel a rush of wind and hear a voice,\"Hurry, your world is ending! Quick come with me!\"");
+            var path1 = prompt("Do you open your eyes to see who is speaking?").toLowerCase();
+        //inPortal(); function sends you into the story. 
+        //this is where the game splits.
+            if(path1 === "yes"){
+                    alert("Suddenly you look up infront of you. There stands a humanoid creature.\nIt stands in the way of what seems to be a portal of light.\"Hurry they are coming for you!");
+                var followCreature =  prompt("Do you follow the creature?").toLowerCase();
+                    if(followCreature == "yes"){
+                        standInFrontOfPortal();
+                    }else{
+                        stay();
+                    }
+
+            }
+            else if(path1 === "no"){
+                    alert("You have choosen to remain asleep.");
+                    restart();
+                        }
+                else{
+                    restart();
+                     }
+        
+        }
+
+//This is where the player will enter the portal.
+ function standInfrontOfPortal(){
+            alert("You stand infront of a portal of light. Walk through it to start your adventure.");
+            portalOfLight();
+        }
+        function portalOfLight(){
+            var portalPath = new Array();
+            portalPath[0] ="You are launched forward into the light at high speed! Soon you are falling toward the ground.\" THUD! You land on the creature which breaks your fall.";
+            portalPath[1] ="Nothing happened."
+            portalPath[2] = "You step through the portal into a blinding void of light. Soon you arrive at the end into a world of red and purple rocks.";
+            portalPath[3] ="You step through the portal. When you arrive on the otherside you realize you are naked!";
+
+            var randomPortal = portalPath[Math.floor(Math.random() * portalPath.length)];
+
+            alert(randomPortal);
+
+            if (randomPortal == "You are launched forward into the light at high speed! Soon you are falling toward the ground.\" THUD! You land on the creature which breaks your fall."){
+                meetTheCreature();
+            }else if(randomPortal == "You step through the portal into a blinding void of light. Soon you arrive at the end into a world of red and purple rocks."){
+                inRomonia();
+
+            }else if(randomPortal == "You step through the portal. When you arrive on the otherside you realize you are naked!"){
+                naked();
+            }
+            else if(randomPortal == "Nothing happened."){
+                yourTackled();
+            }
+            else{
+                
+                standInfrontOfPortal();
+            }
+        }
+
+        //This is what happens when you decide to stay in the world
+function stay(){
+    var stayOnEarth = new Array();
+            stayOnEarth[0] ="You relax and go to sleep. In the middle of your nap a fire ball from the sky burns you alive.";
+            stayOnEarth[1] ="Nothing happened."
+            stayOnEarth[2] = "You turn around to walk away from the creature, but it grabs you and throughs you into the portal.";
+            stayOnEarth[3] ="You look up into the sky and see a fire ball heading toward you!";
+
+            var randomStayEvent = stayOnEarth[Math.floor(Math.random() * stayOnEarth.length)];
+
+            alert(randomStayEvent);
+
+            if (randomPortal == "You relax and go to sleep. In the middle of your nap a fire ball from the sky burns you alive."){
+                napTime();
+            }else if(randomPortal == "Nothing happened"){
+                lookUp();
+
+            }else if(randomPortal == "You turn around to walk away from the creature, but it grabs you and throughs you into the portal."){
+                inRomonia();
+            }
+            else if(randomPortal == "You look up into the sky and see a fire ball heading toward you!"){
+                moveOutOfWay();
+            }
+            else{
+                
+                standInfrontOfPortal();
+            }
+    }
+    //list of funtions that happen when player enters the 1st portal or stays in the field.
+        function meetTheCreature(){
+            alert("The creature broke your fall and is angry. He bites your head off!");
+            death();
+        }
+        
+        function inRomonia(){
+            alert("This is the world of Romonia! Welcome\" the creature says staning infront of you.");
+        }
+        function naked(){
+            alert("You try to cover yourself behind some rocks. A monster shows up and eats you.");
+            death();
+        }
+        function yourTackled(){
+            alert("You are tackled by the creature! Looking around you notice he saved you from a fire ball.");
+        }
+        function napTime(){
+            alert("Guess you should have heeded the warning of the creature.");
+            death();
+        }
+        function lookUp(){
+            alert("A spaceship hovers over the city. The city burns as it fires lazers. One is heading straight for you!");
+            moveOutOfWay();
+        }
+       
+
+
+
+//Move function moves player in world.
+function moveOutOfWay(){
+    movePlayer();
+}
+function movePlayer(keyCommand){
+    
+    var playerDirection = prompt("What direction do you wish to move?").toLowerCase();
+    switch(playerDirection){
+        case "forward": 
+            if (playerDirection == "forward"){
+                playerOrientation.x++;
+            }else{
+                alert("You didn't move yet!");
+            }
+        break;
+        case "left": 
+            if (playerDirection == "left"){
+                playerOrientation.y--;
+            }else{
+                alert("You didn't move yet!");
+            }
+        break;
+            case "backward": 
+            if (playerDirection == "backward"){
+                playerOrientation.x--;
+            }else{
+                alert("You didn't move yet!");
+            }
+        break;
+            case "right": 
+            if (playerDirection == "right"){
+                playerOrientation.y++;
+            }else{
+                alert("You didn't move yet!");
+            }
+        break;
+        default:
+        alert("You didn't move yet!");
+        break;
+    }
+}
+
+//game initiation starts here.       
+       titleScreen();    
+        </script>
+    </body>
+</html>

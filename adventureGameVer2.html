@@ -1,2 +1,39 @@
 adventureGameVer2
 <!DOCTYPE html>
+<html>
+    <head>
+        Mirror Portals
+    </head>
+    <body>
+        <script>
+            //name variable
+            var name = undefined;
+
+//starting of title screen.
+ function titleScreen(){
+        var begining = alert("Mirrors of Romonia: The Game");
+        var player = prompt("What is your name?");
+         var gameStart = confirm(player + " are you ready to start?");
+         gameStart_OutsideAnswer = gameStart;
+         name = player; 
+         //Game starts here
+            if(gameStart_OutsideAnswer == true){
+
+            game();
+            }
+            else {
+                restart();
+            }
+        }
+//endGame function
+    function endGame(){
+            alert("Alas you have left us. Farwell noble " + player);
+            restart();
+        }
+
+
+            //game initiation starts here.       
+       titleScreen();    
+        </script>
+    </body>
+</html>
