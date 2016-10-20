@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        Rock Paper Scissors
+    </head>
+    <body>
+        <script>
+var name = undefined;
+var playerScore = 0;
+var playerOnLevel = 1;
+//player winning items
+var items = {};
+
+//This is the start code
+var startUp = prompt("Swamp Hands the Game\nDo you wish to start the game?").toLowerCase();
+    if (startUp == "yes"){
+        startGame();
+    }else{
+        alert("Game has shut down.");
+        }
+
+//function to endGame();
+function endGame(){
+    alert("The Game Ends! Player Score: "+ playerScore);
+    var again = prompt("Do you want to restart?").toLowerCase();
+        if(again == "yes"){
+            levelOne();
+        }else{
+            alert("GoodBye!");}
+}
+//Welcome Function
+function startGame(){
+    var playerName = prompt("What is your name?");
+    name = playerName;
+    alert("Welcome to the Swamp! Here you will be able to battle three bosses in a game of Rock, Paper, Scissors. Defeat one boss to progress to the next level. If you defeat all of the levels you win!");
+    alert(name + " here are your instructions to play.\n1. When asked what type of hand you want to play you can type\n(rock, paper, or scissors).");
+    var ready = confirm("Are you ready to play?");
+        if(ready == true){
+            levelOne();
+        }else{
+            startGame();
+         }
+}
+//the first level.
+function levelOne(){
+    var acceptChallenge = confirm("A giant of the swamp challenges you. Do you accept?");
+        if (acceptChallenge == true){
+            
+            playerChoice();
+        }else{
+            alert("You are not ready are you? Lets try again.");
+            levelOne();
+        }
+}
+
+//Function to move onto next level.
+function nextlevel(){
+    playerOnLevel++;
+    if(playerOnLevel == 2){
+        items.trophy = "Trophy ";
+        alert("Your score: " + playerScore + " Achievements: " + items.trophy + " ." );
+        levelTwo();
+    }else if (playerOnLevel == 3){
+        items.pileOfGold = ", Pile of Gold!";
+        alert("Your score: " + playerScore + " Achievements: " + items.trophy + " " + items.pileOfGold + " ." );
+        levelThree();
+    }else if(playerOnLevel >= 4){
+        items.crown = ", King's crown";
+        alert("You Win! Your score: " + playerScore + " Achievements: " + items.trophy + " " + items.pileOfGold + " " + items.crown + " ." );
+    }else{
+        alert("you've gone to far.");
+    }
+    
+            
+}
+    
+
+
+//Level 2 & level 3 
+    
+ function levelTwo(){
+     alert("you've made it to level 2!'");
+    var acceptChallenge = confirm("A Clam of the swamp challenges you. Do you accept?");
+        if (acceptChallenge == true){
+            playerChoice();
+        }else{
+            alert("You are not ready are you? Lets try again.");
+            this();
+        }
+ }
+function levelThree(){
+     alert("you've made it to level 3!'");
+    var acceptChallenge = confirm("A Tailor of the swamp challenges you. Do you accept?");
+        if (acceptChallenge == true){
+            playerChoice();
+        }else{
+            alert("You are not ready are you? Lets try again.");
+            this();
+        }
+    }
+
+
+//variables that represent player's choice'
+var playerChoseHand = undefined;
+var enemyChoseHand = undefined;
+//funtions for player to choose hand.
+function playerChoice(){
+    var choice = prompt("What choice will you play? (type \"rock\", \"paper\", or \"scissors\".").toLowerCase();
+    playerChoseHand = choice;
+        if(choice == "rock" || choice == "paper" || choice == "scissors"){
+                enemyChoice();
+        }else{alert("That is not a valid choice, please choose again.");
+            playerChoice();
+        }
+}
+//Function of enemy response.
+function enemyChoice (){
+            var enemyHand = new Array();
+            enemyHand[0] = "rock";
+            enemyHand[1] = "paper";
+            enemyHand[2] = "scissors";
+
+            var randomHand = enemyHand[Math.floor(Math.random() * enemyHand.length)];
+
+            alert(randomHand);
+            enemyChoseHand = randomHand;
+            switch(randomHand){
+                case "rock": compareHands(playerChoseHand, enemyChoseHand);
+                break;
+                case "paper": compareHands(playerChoseHand, enemyChoseHand);
+                break;
+                case "scissors": compareHands(playerChoseHand, enemyChoseHand);
+                break;
+                default: alert("What are you doing? Try again.");
+                playerChoice();
+                break;
+            }
+        }
+//Next are funtions to compare player and enemy.
+function compareHands(playerChoseHand, enemyChoseHand){
+    switch (playerChoseHand){
+        case "rock": 
+            if (playerChoseHand == enemyChoseHand){
+                alert("The enemy has choosen " + enemyChoseHand + " and you have as well.\nIt is a draw.");
+                playerChoice();
+            }else if(playerChoseHand == "rock" && enemyChoseHand == "scissors"){
+                 alert("The enemy has choosen " + enemyChoseHand + ". You win.");
+                playerScore = playerScore + 10;
+                nextlevel();
+            }else if(playerChoseHand == "rock" && enemyChoseHand == "paper"){
+                 alert("The enemy has choosen " + enemyChoseHand + ". You loose.");
+                 playerScore = 0;
+                endGame();
+            }else{alert("There was an error.");}
+        break;
+        case "paper": 
+             if (playerChoseHand == enemyChoseHand){
+                alert("The enemy has choosen " + enemyChoseHand + " and you have as well.\nIt is a draw.");
+                playerChoice();
+            }else if(playerChoseHand == "paper" && enemyChoseHand == "rock"){
+                 alert("The enemy has choosen " + enemyChoseHand + ". You win.");
+                playerScore = playerScore + 10;
+                nextlevel();
+            }else if(playerChoseHand == "paper" && enemyChoseHand == "scissors"){
+                 alert("The enemy has choosen " + enemyChoseHand + ". You loose.");
+                 playerScore = 0;
+                endGame();
+            }else{alert("There was an error.");}
+        break;
+        case "scissors":
+            if (playerChoseHand == enemyChoseHand){
+                alert("The enemy has choosen " + enemyChoseHand + " and you have as well.\nIt is a draw.");
+                playerChoice();
+            }else if(playerChoseHand == "scissors" && enemyChoseHand == "paper"){
+                 alert("The enemy has choosen " + enemyChoseHand + ". You win.");
+                playerScore = playerScore + 10;
+                nextlevel();
+            }else if(playerChoseHand == "scissors" && enemyChoseHand == "rock"){
+                 alert("The enemy has choosen " + enemyChoseHand + ". You loose.");
+                 playerScore = 0;
+                endGame();
+            }else{alert("There was an error.");}
+        break;
+        }
+}
+
+
+
+        </script>
+    </body>
+</html>

@@ -46,7 +46,7 @@ function game(){
                     alert("Suddenly you look up infront of you. There stands a humanoid creature.\nIt stands in the way of what seems to be a portal of light.\"Hurry they are coming for you!");
                 var followCreature =  prompt("Do you follow the creature?").toLowerCase();
                     if(followCreature == "yes"){
-                        standInFrontOfPortal();
+                        infrontOfPortal();
                     }else{
                         stay();
                     }
@@ -63,7 +63,7 @@ function game(){
         }
 
 //This is where the player will enter the portal.
- function standInfrontOfPortal(){
+ function infrontOfPortal(){
             alert("You stand infront of a portal of light. Walk through it to start your adventure.");
             portalOfLight();
         }
@@ -91,7 +91,7 @@ function game(){
             }
             else{
                 
-                standInfrontOfPortal();
+                infrontOfPortal();
             }
         }
 
@@ -107,7 +107,7 @@ function stay(){
 
             alert(randomStayEvent);
 
-            if (randomPortal == "You relax and go to sleep. In the middle of your nap a fire ball from the sky burns you alive."){
+            if (randomStayEvent == "You relax and go to sleep. In the middle of your nap a fire ball from the sky burns you alive."){
                 napTime();
             }else if(randomPortal == "Nothing happened"){
                 lookUp();
@@ -116,11 +116,11 @@ function stay(){
                 inRomonia();
             }
             else if(randomPortal == "You look up into the sky and see a fire ball heading toward you!"){
-                moveOutOfWay();
+                movePlayer();
             }
             else{
                 
-                standInfrontOfPortal();
+                infrontOfPortal();
             }
     }
     //list of funtions that happen when player enters the 1st portal or stays in the field.
@@ -145,16 +145,14 @@ function stay(){
         }
         function lookUp(){
             alert("A spaceship hovers over the city. The city burns as it fires lazers. One is heading straight for you!");
-            moveOutOfWay();
+            movePlayer();
         }
        
 
 
 
 //Move function moves player in world.
-function moveOutOfWay(){
-    movePlayer();
-}
+
 function movePlayer(keyCommand){
     
     var playerDirection = prompt("What direction do you wish to move?").toLowerCase();
